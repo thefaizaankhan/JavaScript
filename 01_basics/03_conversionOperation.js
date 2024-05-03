@@ -24,18 +24,42 @@
 // "" => false
 // "faizaan" => true
 
-let somenumber = 33.4
+// let somenumber = 33.4
 
-let stringNumber = String(somenumber)
-console.log(stringNumber)
-console.log(typeof stringNumber)
+// let stringNumber = String(somenumber)
+// console.log(stringNumber)
+// console.log(typeof stringNumber)
+
+// OPERATIONS
+
+let value = 3
+let negValue = -value
+// console.log(negValue);
 
 
+// console.log(3+3);
+// console.log(3-3);
+// console.log(3*3);
+// console.log(3**3);
+// console.log(3/3);
+// console.log(3%3);
 
+// let str1 = "hello faizaan"
+// let str2 = " waah"
 
+// let str3 = str1 +  str2
+// console.log(str3)
 
+// console.log("1" + 2);
+// console.log(1 + "2");
+// console.log("1" + 2 + 2);
+// console.log(1 + 2 + "2");
 
+// console.log(+true);
+// console.log(+" ");
 
-
+let gameCount = 100
+gameCount++; // prefix and postfix operator
+console.log(gameCount)
 
 
