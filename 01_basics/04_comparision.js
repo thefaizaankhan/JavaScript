@@ -31,7 +31,3 @@
 console.log("5" === 5)
 
 // false => bcoz "5" is a string and 5 is number
-
-
-
-
