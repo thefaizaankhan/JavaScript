@@ -47,7 +47,7 @@ console.log(typeof id)
 
 // {} - objects are defined in curly braces
 
-// return type of fuction is called object function.
+// return type of fuction is called object function.ttt
 
 // JS is statically typed or dynamically typed programming language ?
 
