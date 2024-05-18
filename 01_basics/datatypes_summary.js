@@ -51,6 +51,32 @@ console.log(typeof id)
 
 // JS is statically typed or dynamically typed programming language ?
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Here Memory are of two types :-
+
+// 1. Stack - Primitive
+
+// 2. Heap - Non-Primitive
+
+let myName = "FaizaanKhan"
+
+let anotherName = myName
+anotherName = "Youtube"
 
 
+console.log(myName)
+console.log(anotherName)
 
+let userOne = {
+    email: "faizaankhan@gmail.com",
+    upi_id: "faizaan12@ybl"
+}
+
+let userTwo = userOne
+
+userTwo.email = "joe@gmail.com"
+
+
+console.log(userOne.email)
+console.log(userTwo.email)
