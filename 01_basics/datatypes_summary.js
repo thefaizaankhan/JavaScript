@@ -45,6 +45,10 @@ const myFunction = function(){
 
 console.log(typeof id)
 
+// {} - objects are defined in curly braces
+
+// return type of fuction is called object function.
+
 // JS is statically typed or dynamically typed programming language ?
 
 
