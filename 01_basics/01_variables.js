@@ -9,8 +9,7 @@ let accountState
 
 accountEmail = "faizu@gmail.com"
 accountPassword = "09876"
-accountCity = "Bombay"
-
+accountCity = "Bombay" // variable can also be declared like this but this is not a preferred practice. Just to remember.
 console.log(accountId);
 
 /*
