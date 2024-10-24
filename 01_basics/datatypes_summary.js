@@ -8,9 +8,25 @@
 
 // 1. Primitive Datatypes
 
-// These are call by value data types. When you copy this data type from one point to another point memory reference of original data is not given but a copied version is given so when you make changes you make changes in the copied version original data (memory reference).
+// These are call by value data types. It is stored directly in the Stack Memory. These are typically small and fixed-sized values.
 
-// 7 types : String, Number, Boolean, null, undefined, Symbol, BigInt
+// When you copy this data type from one point to another point memory reference of original data is not given but a copied version is given so when you make changes you make changes in the copied version not in original data (memory reference).      OR
+
+// When copied, a new copy of the primitive value is created, meaning the new variable holds an independent copy of the value. There is no shared reference between the original and the copied value. Any modifications made to the copied version do not affect the original value, as they are separate in memory.
+
+// Immutable - once created it cannot be changed
+
+//***  A "reference" is like an address or link that points to where something is stored in memory.
+
+// Example explaining above concept : 
+// let a = 10;
+// let b = a;  // A copy of 'a' is assigned to 'b'
+// b = 20;     // Changing 'b' does not affect 'a'
+
+// console.log(a); // 10 (original value remains unchanged)
+// console.log(b); // 20 (only the copy is modified)
+
+// 7 types :  Number, String, Boolean, null, undefined, Symbol, BigInt
 
 const score = 20
 const scoreValue = 123.56
@@ -28,6 +44,22 @@ const anotherId = Symbol('578990')
 // const bigNumber = 123456890n
 
 // 2. Reference (Non Primitive Data types)
+
+// These are call by reference data types also known as reference types. Non Primitive data types are objects that can store collections of data or more complex entities. These data types are stored in heap memory, and variables contain a reference (or pointer) to the location in memory where the data is stored.  
+
+// When you assign or pass a non-primitive value (like an object or array) to another variable, you're not copying the actual data. Instead, you're copying the reference to the original data. This means both variables now point to the same memory location.
+
+//***  A "reference" is like an address or link that points to where something is stored in memory.
+
+// Mutable : can be changed after it is created
+
+// Example explaining above concept :-
+// let obj_1 = {name: "John", age: 24};
+// let obj_2 = obj_1; // obj_2 is the reference to obj_1
+
+// obj_2.age = 32; // changing obj_2 affects obj_1
+
+// console.log(obj_1.age);
 
 // types : Array, Objects, Functions
 
