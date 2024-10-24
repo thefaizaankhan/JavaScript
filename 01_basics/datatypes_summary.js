@@ -87,9 +87,9 @@ console.log(typeof id)
 
 // Here Memory are of two types :-
 
-// 1. Stack - Primitive
+// 1. Stack - Primitive - when a memory is defined in stack memory you get a copy of that value
 
-// 2. Heap - Non-Primitive
+// 2. Heap - Non-Primitive - when a memory is defined in the heap memory you get a reference of the original value
 
 let myName = "FaizaanKhan"
 
