@@ -81,3 +81,19 @@ const addTwo = function (num){  // also known as Expression
 // Stack data structure used to manage function calls.
 // Hoisting in JavaScript
 // Closures in JavaScript
+// Lexical scoping ensures that child functions can access variables from their parent functions but not vice versa.
+
+/* How JavaScript Executes the Code ?
+
+1. Two Phases of JavaScript Execution
+JavaScript uses the Execution Context Model, which consists of:
+Creation Phase (Memory Allocation):
+During this phase, the engine allocates memory for variables and functions. It doesn't execute the code but sets up everything in memory.
+Execution Phase:
+The engine runs the code line by line, resolving variables and executing functions.
+2. Global Execution Context
+The JavaScript engine starts by creating a Global Execution Context, which consists of:
+Global Memory: Where global variables and function declarations are stored.
+Global Scope: The global lexical environment where all variables are accessible unless shadowed. 
+
+JavaScript first prepares the code (creation phase) and then executes it (execution phase) while managing scopes and memory via the Global Execution Context.*/
