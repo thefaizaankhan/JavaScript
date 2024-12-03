@@ -110,6 +110,7 @@ this.name = name; // Throws an error because arrow functions can't be used as co
 // const newPerson = new Person("Harry") // TypeError: Person is not a constructor
 
 // -----------------------------------------------------------------
+// Arrow functions (=>) were introduced in ES6 (ECMAScript 2015) to make function syntax simpler and more expressive.
 
 // Basic Arrow Function 
 // const addTwo = (num1, num2) => {
@@ -126,7 +127,34 @@ this.name = name; // Throws an error because arrow functions can't be used as co
 
 // **Note : If you wrap inside {} curly braces then you must have to use return keyword but if you wrap inside () parenthesis then no need to use return keyword. This technique is very extensively used in React.js.
 
-// Returning an object
+// Returning an object (Implicit Return):
 const addTwo = (num1, num2) =>  ({username : "Faizaan"})
-
 // console.log(addTwo(3, 7))
+
+// Single Parameter, Single Expression (Implicit Return):
+const square = x => x * x;
+// console.log(square(4)); // Output: 16
+
+// OR
+
+// Multiple Parameters (Implicit Return):
+const add = (a, b) => a + b;
+// console.log(add(3, 7)); // Output: 10
+
+// OR
+
+// No Parameters (Implicit Return):
+const greet = () => "hello good morning!";
+// console.log(greet());  // Output: Hello, World!
+
+
+// Multiple Statements (Explicit Return): If the function body contains more than one statement, you must use curly braces {} and explicitly use return. Here two statements are : console.log('Multiplying:', a, b); and return a * b;
+
+// If a function body includes more than one action, each separated by a semicolon (;), it contains multiple statements.
+
+const multiplyAndLog = (a, b) => {
+    // console.log('Multiplying:', a, b);
+    return a * b; // Explicit return
+};
+// console.log(multiplyAndLog(3, 5)); // Output: 15
+
