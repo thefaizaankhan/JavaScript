@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Learning</title>
+
+  <style>
+    .bg-black {
+      background-color: #212121;
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="bg-black">
+  <div>
+    <h1 class="heading" id="title">DOM in JavaScript <span style="display: none;">Test Text</span></h1>
+    <h2>Lorem ipsum dolor sit amet First.</h2>
+    <h2>Lorem ipsum dolor sit amet Second.</h2>
+    <h2>Lorem ipsum dolor sit amet Third.</h2>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, doloremque.</p>
+
+    <ul>
+      <li class="list-item">one</li>
+      <li class="list-item">two</li>
+      <li class="list-item">three</li>
+      <li class="list-item">four</li>
+    </ul>
+
+    <input type="password" name="" id="" placeholder="">
+  </div>
+
+  <!-- Getting the elements by Class Name
+  > document.getElementsByClassName('heading')
+  > HTMLCollection [h1#title.heading, title: h1#title.heading]
+
+  # Query Selectors in DOM 
+  # Gives the first <h1> tag in document Or in the current page
+  > document.querySelector('h1')
+  > <h1 class=​"heading" id=​"title">​"DOM in JavaScript "<span style=​"display:​ none;​">​Test Text​</span>​</h1>​
+
+  # gives the first <h2> tag in the current document
+  > document.querySelector('h2')
+  > <h2>​Lorem ipsum dolor sit amet First.​</h2>​
+
+  # Accessing an element by id -> use # 
+  > document.querySelector('#title')
+  > <h1 class=​"heading" id=​"title">​…​</h1>​
+
+  # Accessing an element by class name -> use .
+  > document.querySelector('.heading')
+  > <h1 class=​"heading" id=​"title">​…​</h1>​
+  
+  # Since there is no such input tag so the result will be 'null'
+  > document.querySelector('input[type="password"]')
+  > null
+
+  # After adding the input tag in html
+  > document.querySelector('input[type="password"]')
+  > <input type=​"password" name id placeholder>​
+
+  > document.querySelector('p')
+  > <p>​Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, doloremque.​</p>​
+
+  > document.querySelector('p:first-child')
+  > null
+
+  > document.querySelector('ul')
+  > <ul>​…​</ul>​
+
+  > const myul = document.querySelector('ul')
+  > undefined
+
+  > myul.querySelector('li')
+  > <li>​…​</li>​
+
+  # storing the value of myul in a 'turnGreen' constant 
+  > const turnGreen = myul.querySelector('li')
+  > undefined
+  
+  # no such color as 'voilet'
+  > turnGreen.style.backgroundColor = "voilet";
+  > 'voilet'
+
+  > turnGreen.style.backgroundColor = "red"
+  > 'red'
+
+  # incorrect syntax in writing the padding size
+  > turnGreen.style.padding = "10 px"
+  > '10 px'
+
+  > turnGreen.style.padding = "10px"
+  > '10px'
+
+  > turnGreen.innerText = "five"
+  > 'five'
+
+  # we get NodeList here (it is not array) and check properties in prototype -> map() is not present
+  > document.querySelectorAll('li')
+  > NodeList(3) [li, li, li]0: li1: li2: lilength: 3[[Prototype]]: NodeListentries: ƒ entries()forEach: ƒ forEach()length: 1name: "forEach"arguments: (...)caller: (...)[[Prototype]]: ƒ ()[[Scopes]]: Scopes[0]item: ƒ item()keys: ƒ keys()length: (...)values: ƒ values()constructor: ƒ NodeList()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "NodeList"get length: ƒ length()[[Prototype]]: Object
+
+  > const tempLiList = document.querySelectorAll('li')
+  > undefined
+
+  > tempLiList
+  > NodeList(3) [li, li, li]0: li1: li2: lilength: 3[[Prototype]]: NodeListentries: ƒ entries()forEach: ƒ forEach()item: ƒ item()keys: ƒ keys()length: (...)values: ƒ values()constructor: ƒ NodeList()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "NodeList"get length: ƒ length()[[Prototype]]: Object
+  
+  > const myArr = [1, 2, 3, 4, 5]
+  > undefined
+  
+  # we get array here -> prototype -> map() is present 
+  > myArr
+  > (5) [1, 2, 3, 4, 5]0: 11: 22: 33: 44: 5length: 5[[Prototype]]: Array(0)at: ƒ at()concat: ƒ concat()constructor: ƒ Array()copyWithin: ƒ copyWithin()entries: ƒ entries()every: ƒ every()fill: ƒ fill()filter: ƒ filter()find: ƒ find()findIndex: ƒ findIndex()findLast: ƒ findLast()findLastIndex: ƒ findLastIndex()flat: ƒ flat()flatMap: ƒ flatMap()forEach: ƒ forEach()includes: ƒ includes()indexOf: ƒ indexOf()join: ƒ join()keys: ƒ keys()lastIndexOf: ƒ lastIndexOf()length: 0map: ƒ map()pop: ƒ pop()push: ƒ push()reduce: ƒ reduce()reduceRight: ƒ reduceRight()reverse: ƒ reverse()shift: ƒ shift()slice: ƒ slice()some: ƒ some()sort: ƒ sort()splice: ƒ splice()toLocaleString: ƒ toLocaleString()toReversed: ƒ toReversed()toSorted: ƒ toSorted()toSpliced: ƒ toSpliced()toString: ƒ toString()unshift: ƒ unshift()values: ƒ values()with: ƒ with()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: true, find: true, …}[[Prototype]]: Object
+
+  > tempLiList
+  > NodeList(3) [li, li, li]
+
+  
+  #+++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+  # Que : What is the difference in NodeList and Array ? 
+  
+  # A NodeList is a collection of DOM nodes, typically returned by DOM manipulation methods like document.querySelectorAll() or childNodes
+  
+  # An Array is a standard JavaScript object used to store list of items. It can hold any data strings, numbers, objects or DOM Nodes.
+
+  # NodeList limited methods like forEach(), item(), and entries() (in modern browsers).
+
+  # Array supports full array manipulation methods like map(), filter(), reduce(), pop(), push().
+
+  # A NodeList can be converted into an array using:
+  - Spread operator: [...nodeList]
+  - Array.from(nodeList)
+
+  # Array does not need any conversion.
+
+  # Example :- 
+  # NodeList Example
+  const nodeList = document.querySelectorAll('div');
+  console.log(nodeList); // Outputs: NodeList(3) [div, div, div]
+  console.log(nodeList.map); // undefined (NodeList does not have 'map')
+
+  # Convert NodeList to Array
+  const nodeArray = Array.from(nodeList);
+  console.log(nodeArray.map(node => node.textContent)); // Works!
+
+  # Array Example
+  const array = [1, 2, 3];
+  console.log(array); // Outputs: [1, 2, 3]
+  console.log(array.map(num => num * 2)); // Outputs: [2, 4, 6]
+
+  Que : What is the difference between document.querSelector() and document.querySelectorAll()
+
+  document.querySelector
+  Purpose: Selects only the first element in the document that matches a specified CSS selector.
+  Return Value: A single Element object, or null if no matching element is found.
+  Use Case: When you need to manipulate a single element.
+  Not directly iterable
+
+  document.querySelectorAll
+  Purpose: Selects all elements in the document that match a specified CSS selector.
+  Return Value: A NodeList (a collection of elements). If no elements match, it returns an empty NodeList.
+  Use Case: When you need to manipulate multiple elements.
+  Directly iterable (e.g., with forEach)
+  #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+
+
+  # Since it is NodeList that is why it won't work
+  > tempLiList.style.color = "green"
+  > VM10693:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:24
+  (anonymous) @ VM10693:
+
+  # NodeList is somewhat like array -> tempLiList[0] -> will make the ul>li>one to 'green' color
+  > tempLiList[0].style.color = "green"
+  > 'green'
+
+  > const myH1 = document.querySelectorAll('h1')
+  > undefined
+
+  > myH1
+  > NodeList [h1#title.heading]0: h1#title.headinglength: 1[[Prototype]]: NodeListentries: ƒ entries()forEach: ƒ forEach()item: ƒ item()keys: ƒ keys()length: (...)values: ƒ values()constructor: ƒ NodeList()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "NodeList"get length: ƒ length()[[Prototype]]: Object
+
+  > myH1.style.color = "yellow"
+  > VM12501:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:18
+  (anonymous) @ VM12501:1Understand this errorAI
+
+  > myH1[0].style.color = "yellow"
+  > 'yellow'
+
+  > tempLiList
+  > NodeList(3) [li, li, li]
+
+  # use of forEach on NodeList coz we can loop on NodeList with forEach loop
+  > tempLiList.forEach((item) => {
+      item.style.backgroundColor = "orange"
+    })
+
+  # if we want use map() on nodelist then convert -> nodelist -> array -> then use map()
+
+  # Now, add class name on ul>li ans <li class="list-item">one</li>
+  
+  # Getting the ELEMENTS by class name -> we get HTMLCollection as the returned value which is different from NodeList 
+  > document.getElementsByClassName('list-item')
+  > HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+  # storing values in a constant
+  > const tempClassList = document.getElementsByClassName('list-item')
+
+  # applying forEach loop on HTMLCollection(tempClassList) -> but through this method we can apply loop on it
+  > tempClassList.forEach(function (li) {
+      console.log(li)
+    })
+      
+  > VM13567:1 Uncaught TypeError: tempClassList.forEach is not a function
+    at <anonymous>:1:15 (ERROR)
+  
+  # Now we need to convert HTMLCollection to Array then we can apply loop on it
+  # converting HTML Collection to Array
+  > Array.from(tempClassList)
+  > (4) [li.list-item, li.list-item, li.list-item, li.list-item]...
+  
+  > const myConvertedArray = Array.from(tempClassList)
+
+  > myConvertedArray.forEach(function(li) {
+      li.style.color = "blue"
+    })
+
+  # Now open wikipedia of any topic/person and then try to test and manipulate elements via DOM
+  
+  # getting all <h2> headings of the page
+  > document.querySelectorAll('h2')
+  > NodeList(5) [h2.vector-pinnable-header-label, h2#Early_life, h2#Career, h2#References, h2#External_links]...
+
+  > const allH2 = document.querySelectorAll('h2')
+  > undefined
+  
+  # error (wrong way since it is a NodeList)
+  > allH2.innerText
+  > undefined
+
+  # correct way
+  > allH2[0].innerText
+  > 'Contents'
+
+  > allH2[2].innerText
+  > 'Career'
+
+  > allH2[0].innerText
+  > 'Contents'
+  
+  # accessing the headings which has class name "mw-heading"
+  > const allHeads = document.querySelectorAll('.mw-heading')
+  > undefined
+
+  > allHeads
+  > NodeList(8) [div.mw-heading.mw-heading2, div.mw-heading.mw-heading2, div.mw-heading.mw-heading3, div.mw-heading.mw-heading3, div.mw-heading.mw-heading4, div.mw-heading.mw-heading3, div.mw-heading.mw-heading2, div.mw-heading.mw-heading2]
+
+  > allHeads[0].innerText
+  > 'Early life[edit]'
+
+  > allHeads[4].innerText
+  > 'Appointment to CEO and resignation[edit]'
+
+  > allH2.forEach(function (item){
+      item.style.color = "orange"
+    })
+
+  > allH2.forEach(function (item){
+      item.style.color = "black";
+      item.style.backgroundColor = "yellow";
+      item.style.padding = "2rem";
+      item.innerText = "Faizaan"
+    })-->
+  
+</body>
+</html>
