@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript DOM | Creating new element in DOM | part 2 </title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+
+
+<script>
+  // creating an element
+  // const div = document.createElement('h1')
+  const div = document.createElement('div')
+  console.log(div);
+
+  // each element has its node list and has its values(id, class and all). Now to set properties in the element (className, id and some are default properties)
+  div.className = "main"
+  div.id = Math.round(Math.random() * 10 + 1) // just for fun (generating random ids)
+  // to set custom attributes (in key-value form) -> <div class="main" id="7" title="generated title"></div>
+  div.setAttribute("title", "generated title")
+  div.style.backgroundColor = "green"
+  div.style.padding = "10px"
+
+  // but still the div is not visible in the page because it is in the memory not on the page so we need to attach div in the page
+
+  // div.innerText = "This is a created element by DOM"  
+
+  // Now as per some senior devs .setAttribute() is the better and much optimized approach to add the properties because it directly sets the attributes it doesn't overrites the existing one but .className or .innerText overrites the existing one these takes the reference of the attributes and then overrites it by the values (method 1)
+
+  // creating our textNode (method 2)
+  const addText = document.createTextNode("Hello Good Morning!!")
+  // attaching the textNode
+  div.appendChild(addText)
+
+  // both method 1 and method 2 are good (DSA -> ?)
+
+  // finally making visible the changes on the page -> attaching the documnet to the page
+  document.body.appendChild(div)
+
+  // now we can also wrap this div a new function and pass arguments through it and add color and give backgroundColor to it
+  // also run the loop on it via array giving the background colors and how many times the loop should run 
+
+</script>
+  
+</body>
+</html>
