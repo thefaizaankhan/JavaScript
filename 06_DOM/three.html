@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript DOM | Creating new element in DOM </title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+  <div class="parent">
+    <!-- this is comment -->
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">Wednesday</div>
+    <div class="day">Thursday</div>
+    <div class="day">Friday</div>
+  </div>
+
+  <script>
+    // to know how many elements does the parent element have
+    // accessing the element through querySelector -> by class Name
+    const parent = document.querySelector('.parent')
+    // console.log(parent);
+    // .children -> we can access the children or child elements of parent by this property -> result -> HTMLCollection(5)
+    // console.log(parent.children);
+    // console.log(parent.children[1]);
+    // console.log(parent.children[3].innerHTML);
+
+    // Now since we got HTMLCollection() so we should convert it into -> array -> loop on it -> to get values
+    // but we can also apply simple for-loop on HTMLCollection()
+
+    // for (let i = 0; i < parent.children.length; i++) {
+    //   console.log(parent.children[i].innerHTML);
+    // }
+
+    // parent.children[1].style.color = "orange"
+
+    // parent.children[3].style.padding = "10px"
+
+    // targets first element of Child Elements
+    // console.log(parent.firstElementChild);
+    
+    // targets last element of Child Elements
+    // console.log(parent.lastElementChild);
+
+    // querySelector is an expensive operation. it takes time. then why traverse whole DOM tree?? why use querySelector again and again ? 
+    const dayOne = document.querySelector('.day')
+    // console.log(dayOne);
+    // // targets Parent Element directly
+    // console.log(dayOne.parentElement);
+    // // targets the next element -> Tuesday 
+    // console.log(dayOne.nextElementSibling); 
+
+    // Gives all the nodes of the element -> we get NodeList(11) [text, div.day, text, div.day, text, div.day, text, div.day, text, div.day, text] or we can also say ChildNodes -> DOM is a tree structure each line or line break and also the element is a node element -> when we open NodeList(11) first we get -
+    // 0: text -> it is simply the line break (enter) -> Yes, it is a text node (each element has its childNodes)
+    // 1: div.day -> <div class="day">Monday</div>
+    // 2: text -> again line break (enter)
+    // 3: div.day -> <div class="day">Tuesday</div>
+
+    // ON further, if we add a comment in the parent element this will be also counted as a text node and considered among the childNodes 
+
+    // React is also built up on childNodes concept 
+
+    console.log("NODES : ", parent.childNodes);
+
+  </script>
+</body>
+</html>
