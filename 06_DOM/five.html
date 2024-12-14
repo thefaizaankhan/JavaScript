@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit and Remove Elements in DOM | JavaScript</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+  <ul class="language">
+    <li>JavaScript</li>
+  </ul>
+
+  <!-- 
+  # Some most common methods used in DOM :-
+
+  1. Selecting Elements
+  These methods are used to find and target specific elements in the DOM.
+    
+  - getElementById()
+  Selects an element by its id.
+  const element = document.getElementById('myId');
+
+  -getElementsByClassName()
+  Selects all elements with a specific class name. Returns an HTMLCollection.
+  const elements = document.getElementsByClassName('myClass');
+
+  -getElementsByTagName()
+  Selects all elements with a specific tag name. Returns an HTMLCollection.
+  const elements = document.getElementsByTagName('div');
+
+  -querySelector()
+  Selects the first element that matches a CSS selector.
+  const element = document.querySelector('.myClass');
+
+  -querySelectorAll()
+  Selects all elements that match a CSS selector. Returns a NodeList.
+  const elements = document.querySelectorAll('.myClass');
+
+  ----------------------------------------------------------
+
+  2. Creating Elements
+  These methods are used to dynamically create elements or nodes.
+
+  - document.createElement()
+  Creates a new HTML element.
+  const newDiv = document.createElement('div')
+
+  - document.createTextNode()
+  Creates a new text node.
+  const text = document.createTextNode('Hello World');
+
+  ---------------------------------------------------------
+
+  3. Editing Elements
+  These methods allow you to modify the content, attributes, or styles of elements.
+
+  - innerHTML
+  Sets or gets the HTML content of an element.
+  element.innerHTML = '<p>New content</p>';
+
+  - textContent
+  Sets or gets the text content of an element.
+  element.textContent = 'New text';
+
+  - setAttribute()
+  Sets a new attribute or updates an existing one.
+  element.setAttribute('id', 'newId');
+
+  - removeAttribute()
+  Removes an attribute from an element.
+  element.removeAttribute('class');
+
+  - classList
+  Methods for adding, removing, or toggling classes:
+  - add(): Adds a class.
+  - remove(): Removes a class.
+  - toggle(): Toggles a class.
+  element.classList.add('newClass');
+  element.classList.remove('oldClass');
+  element.classList.toggle('hidden');
+
+  - style
+  Changes the inline styles of an element.
+  element.style.color = 'red';
+
+  -------------------------------------------------------
+
+  4. Appending Elements
+  These methods add new child nodes to an existing parent.
+
+  - appendChild()
+  Appends a child node as the last child.
+  parentElement.appendChild(newElement);
+
+  - append()
+  Appends multiple elements or text.
+  parentElement.append(newElement, 'Some text');
+
+  - insertBefore()
+  Inserts a node before a specific child of a parent.
+  parentElement.insertBefore(newElement, referenceElement);
+
+  --------------------------------------------------------
+
+  5. Deleting Elements
+  These methods are used to remove elements or nodes.
+
+  - remove()
+  Directly removes an element.
+  element.remove();
+
+  - removeChild()
+  Removes a child node from its parent.
+  parentElement.removeChild(childElement);
+
+  ------------------------------------------------------
+
+  - Commonly Used Methods in Practice
+
+  - cloneNode()
+  Creates a duplicate of an element.
+  const clone = element.cloneNode(true); // true = deep clone
+  
+  - replaceChild()
+  Replaces an existing child with a new one.
+  parentElement.replaceChild(newChild, oldChild);
+  -->
+
+  <script>
+    // function to add list item
+    // function addLanguage(langName){
+    //   // creating an element -> list item
+    //   const li = document.createElement('li')
+    //   // adding value in list item (js, ruby, cpp)
+    //   li.innerHTML = (`${langName}`)
+    //   // attaching li to class = "language"
+    //   document.querySelector('.language').appendChild(li)
+    // }
+
+    // addLanguage("python")
+    // addLanguage("rust")
+
+    // Here in the list item we have only 1 item, what if we have 100 or 1000 or 10000 items? issue here is that each time the method runs the in the document whole tree traverses to append the value at the last -> issue of optimization 
+
+    // Optimized Method
+    function addOptiLanguage(langName){
+      const li = document.createElement('li');
+      // creating a new node
+      li.appendChild(document.createTextNode(langName))
+      document.querySelector('.language').appendChild(li)
+    }
+
+    addOptiLanguage('golang')
+    addOptiLanguage('rust')
+
+    // Edit (golang -> PHP)
+    const secondLang = document.querySelector('li:nth-child(2)')
+    // console.log(secondLang); // viewing the element
+    // secondLang.innerHTML = "PHP"
+    const newLi = document.createElement('li')
+    newLi.textContent = "PHP"
+    secondLang.replaceWith(newLi)
+
+    // Edit (PHP -> Python)
+    const thirdLang = document.querySelector('li:nth-child(2)')
+    // console.log(thirdLang);
+    thirdLang.outerHTML = '<li>Python</li>'
+
+    // Edit (JavaScript -> TypeScript)(first element in the list)
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+    // Remove (rust)(last-language in the list)
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+
+    // Remove (Python)
+    const removeLang = document.querySelector('li:nth-child(2)')
+    removeLang.remove()
+
+  </script>
+</body>
+</html>
