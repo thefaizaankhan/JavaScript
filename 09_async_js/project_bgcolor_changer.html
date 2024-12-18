@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Color Changer | Async JavaScript</title>
+</head>
+<body style="background-color: #212121; font-family: Segoe UI; color: aliceblue;">
+
+  <h1>Start should change the background color every second</h1>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+</body>
+<script>
+  // generate random color 
+  const randomColor = function(){
+    // know the range of hex color code (0-9 & A-F)
+    const hex = "0123456789ABCDEF"
+    let color = '#'
+    for (let i = 0; i < 6; i++) {
+      color += hex[Math.floor(Math.random() * 16)]
+    }
+    return color
+  }
+  // console.log(randomColor());
+
+  let intervalId;
+
+  const startChangingColor = function() {
+    if(!intervalId) {
+      intervalId = setInterval(changeBackgroundColor, 1000);
+    }
+
+    function changeBackgroundColor () {
+      document.body.style.backgroundColor = randomColor();
+    }
+  }
+
+  const stopChangingColor = function () {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  document.querySelector('#start').addEventListener('click', startChangingColor);
+
+  document.querySelector('#stop').addEventListener('click', stopChangingColor);
+
+  
+  /*
+  Execution (How random hex color is generated):
+  1. Initialize:
+    hex = "0123456789ABCDEF"
+    color = "#"
+
+  2.  Generate Characters (example values for Math.random()):
+  - First Iteration:
+    Math.random() → 0.345
+    Math.random() * 16 → 5.52
+    Math.floor(5.52) → 5
+    hex[5] → 5
+    Append 5 to color: color = "#5"
+
+  - Second Iteration:
+    Math.random() → 0.781
+    Math.random() * 16 → 12.496
+    Math.floor(12.496) → 12
+    hex[12] → C
+    Append C to color: color = "#5C"
+
+  - Repeat this for 4 more iterations, generating 6 characters in total.
+
+  3. Final Output:
+    Example output: #5C3F9A
+  */
+
+ // ** Understand the code flow of the project do not rush into the code and just starting to code from top or understanding it from starting understand where the values and generating and flowing to which part of code where the values are saving.
+</script>
+</html>

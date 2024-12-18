@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async JS | Part 1</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+  <h1>Learning JavaScript</h1>
+  <button id="stop">Stop</button>
+
+</body>
+<script>
+  
+  // "asynchronous" means things don't happen immediately, but you don't have to wait for one task to finish before starting another.
+  
+  // Async JavaScript refers to JavaScript's ability to handle tasks that take time to complete, such as fetching data from a server, reading files, or setting timers, without blocking the execution of the entire program.
+
+  // Why Async JavaScript is needed - JavaScript is single-threaded, meaning it can do only one thing at a time. If a long task, such as fetching data, blocks execution, the whole program would "freeze" and stop responding. Async JavaScript allows such tasks to be handled in the background without stopping the rest of the program.
+
+  // setTimeout() :-
+
+  // setTimeout() is a non-blocking function that executes a piece of code (callback) only ONCE after a specified delay (in milliseconds)
+  // setTimeout() is not part of core JavaScript (ECMAScript).
+  // It is provided by the browser's window object as part of the Web APIs.
+  // In Node.js, setTimeout() comes from the Node.js runtime environment.
+  // It allows JavaScript to run code asynchronously without blocking execution.
+
+  // handler(callback without a name), callback or function all are generally same terms**
+
+  // The returned timeoutID is a positive integer value which identifies the timer created by the call to setTimeout(). This value can be passed to clearTimeout() to cancel the timeout.
+
+  // setTimeout(function(){
+  //   console.log("Good Morning!!");
+  // }, 3000)
+
+  // storing in a variable 
+  // const greetMe = function(){
+  //   console.log("Good Morning!!");
+  // }
+  // setTimeout(greetMe, 3000)  // giving reference 'greetMe'
+  
+  // stopping the execution of setTimeout on an event 
+  const changeText = function() {
+    document.querySelector('h1').innerHTML = "JS is Fun"
+  }
+  const changeMe = setTimeout(changeText, 3000)
+
+  document.querySelector('#stop').addEventListener('click', function(){
+    clearTimeout(changeMe)
+    console.log("STOPPED")
+  }, false)
+  
+  
+
+</script>
+</html>

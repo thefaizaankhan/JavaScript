@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async JS | Part 2</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+  <h1>JavaScript is Fun</h1>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+
+</body>
+<script>
+
+  // setInterval() :-
+
+  // setInterval() is a built-in method in JS that repeatedly executes a given function or code snippet at a specified time interval.  
+
+  // This method returns an interval ID which uniquely identifies the interval.
+
+  // It keeps running until you stop it using clearInterval().
+
+  // setInterval(function(){
+  //   console.log("hi everyone");
+  // }, 2000)
+
+  // const sayDate = function(str){
+  //   console.log("Faizaan Khan", Date.now());
+  // }
+  // setInterval(sayDate, 1000)  // giving reference 'sayDate'
+
+  // passing a third argument to function -> 'str' as parameter
+  // const sayDate = function(str){
+  //   console.log(str, Date.now());
+  // }
+  // setInterval(sayDate, 2000, "good evening")
+
+  // stopping the continuous execution of setInterval()
+  // const sayDate = function(str){
+  //   console.log(str, Date.now());
+  // }
+  // const stopDate = setInterval(sayDate, 2000, "good evening")
+  // clearInterval(stopDate)
+
+  // TASK : Print your name along with date on the click of 'Start' button and stop the printing on 'Stop' button
+
+  let myName;
+
+  function startButton(){
+    if(!myName){
+      myName = setInterval(printName, 1000)
+    }
+  }
+
+  function printName(){
+    console.log("Faizaan Khan");
+  }
+
+  function stopButton(){
+    clearInterval(myName)
+    // myName = undefined  // Reset to allow restarting
+  }
+
+  document.querySelector('#start').addEventListener('click', startButton)
+
+  document.querySelector('#stop').addEventListener('click', stopButton)
+
+
+  
+
+</script>
+</html>
