@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML EVENTS</title>
+</head>
+<body style="background-color: #313131; color: aliceblue;">
+  <h2>Amazing Images</h2>
+  <div>
+    <ul id="images">
+      <li><img width="200px" src="https://img-c.udemycdn.com/course/480x270/5346430_f677.jpg" id="photoshop" alt="photoshop"></li>
+      <li><img width="200px" src="https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg" id="japan" alt=""></li>
+      <li><img width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd6G4xNvzH6Cp6effT0DZ665oG_oP2cwkhbw&s" id="river" alt=""></li>
+      <li><img width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe-nBzBgBGbMPZpl_O9UmpMoHRd9LZUkaKCA&s" id="owl" alt=""></li>
+      <li><img width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ5ur7AxXQW1UmQj5FFTGpTDroMqNFKUS9fA&s" id="prayer" alt=""></li>
+      <li><a id="google" href="https://google.com" style="color: aliceblue;">Google</a></li>
+    </ul>
+  </div>
+  
+  <script>
+  // In Javascript all the EVENTS run sequentially but some exceptions are also there. JavaScript itself a sequentially runned programming language. All the events are invoked when we do any activity in the browser (keyboard key press, moving mouse etc.) and thus browser events are invoked. 
+
+  /*
+  <li><img width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe-nBzBgBGbMPZpl_O9UmpMoHRd9LZUkaKCA&s" id="owl" onclick= "alert('owl')" alt=""></li>
+
+  Explanation of injecting onclick() in the HTML - This is not a good approach, not a feasable approach because when our application will scale it will create problems so try to avoid it. 
+  */
+  
+  // document.getElementById('owl').onclick = function() {
+  //   alert('owl image is clicked!!')
+  // }
+
+  // This approach is also not good because applying onclick() on 'id' may cause problems later. It provide less features and less information.
+
+  // We should use Event Listeners. Event listeners give u the ability to propagate.
+
+  //*********** Best Approach ************
+  
+  // There are multiple events, here we are taking 'click' event. There also a third and important parameter in the addEventListener() which is false it is default false but not written.
+
+  // document.getElementById('owl').addEventListener('click', function(){
+  //   alert('owl image is clicked again!!')
+  // }, false) **
+
+  // document.getElementById('owl').addEventListener('click', function(){
+  //   alert('owl image is clicked again!!')
+  // })
+  
+  // in old times - .attachEvent()
+  // jQuery - .on()
+  
+  // Event Object - 'e'
+  // document.getElementById('owl').addEventListener('click', function(e){
+  //   console.log(e);
+  // })
+
+  // Types of Events:
+  // Browser Events, Environment Events
+
+  // Interview Questions :-
+  // 1. When u click on a view what the height and width of the page ? 
+  // 2. what was the time when it was clicked.
+  // 3. Build an application in which when a user click on an image or div give me the timestamp when it was clicked.
+  // 4. Build an application draw a div in this and in this div wherever i click a circle/square is drawn.
+  // 5. Check the keyboard speed of the user while typing and check if he is typing the sentence/words correctly.
+
+
+  // Events to Study :-
+  // type, timestamp, defaultPrevented
+  // target, toElement, srcElement, currentTarget
+  // clientX, clientY, screenX, screenY
+  // altkey, ctrlkey, shiftkey, keyCode
+
+  // Event Propagation - There are two context of Event Propagation first is Event Bubbling and second is Event Capturing. In the industry mostly Event Bubbling is used which is by default false also for some case Event Capturing is used which is true. (false and true -> as the third parameter in addEventListener()
+
+  // Understanding Event Bubbling 
+
+  // it will print when we click inside the ul element among the li
+  // document.getElementById('images').addEventListener('click', function(e){
+  //   console.log("Clicked inside the ul");
+  // }, false)
+
+  // it will print when we click on the owl image which is also inside the ul
+  // document.getElementById('owl').addEventListener('click', function(e){
+  //   console.log("Owl image is clicked");
+  // }, false)
+
+  /*
+  when we click inside the ul>li we get in console -
+  > Clicked inside the ul
+
+  but when we click specifically on the owl image we get - 
+  > Owl image is clicked
+  > Clicked inside the ul
+
+  So, Bubbling up goes from inside to outside or from down to up here image > li > ul this tracking of elements done by script is called Event Propagation or Event Bubbling.
+  */
+
+  // Understanding Event Capturing 
+
+  // it will print when we click inside the ul element among the li
+  // document.getElementById('images').addEventListener('click', function(e){
+  //   console.log("Clicked inside the ul");
+  // }, true)
+
+  // it will print when we click on the owl image which is also inside the ul
+  // document.getElementById('owl').addEventListener('click', function(e){
+  //   console.log("Owl image is clicked");
+  // }, true)
+
+  /*
+  when we click inside the ul>li we get in console -
+  > Clicked inside the ul
+
+  but when we click specifically on the owl image we get - 
+  > Clicked inside the ul
+  > Owl image is clicked
+
+  So, Event Capturing goes from top to bottom or from outside to inside. It depends on use case what we use.
+  */
+  
+  // Sometimes we don't want Events to bubbled up. We want that inner and outer element should be separately tracked and they shouldn't be bubbled up. By using stopPropagation() events don't bubbled up.
+  // document.getElementById('owl').addEventListener('click', function(e){
+  //   console.log("Owl image is clicked");
+  //   e.stopPropagation()
+  // }, false)
+
+  // use of preventDefault() 
+  // document.getElementById('google').addEventListener('click', function(e){
+  //   e.preventDefault();
+  // }, false)
+
+  // TASK : using events when u click on a image, image should not be visible. write a script to do so.
+
+  // document.querySelector('#images').addEventListener('click', function(e){
+  //   console.log(e.target.parentNode);
+
+  //   let removeImage = e.target.parentNode
+  //   removeImage.remove()  // Method 1
+
+  //   // removeImage.parentNode.removeChild(removeImage)  // Method 2
+  // }, false)
+
+  // but what will happen if we click on Google Link -> whole ul is disappered -> so how to stop it
+
+  document.querySelector('#images').addEventListener('click', function(e){
+    console.log(e.target.tagName);
+    if(e.target.tagName === 'IMG'){
+      console.log(e.target.id);
+      let removeImage = e.target.parentNode
+      removeImage.remove()
+    }
+  }, false)
+
+
+  </script>
+</body>
+</html>
