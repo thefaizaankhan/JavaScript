@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Request</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body{
+      font-family: Segoe UI;
+      background-color: #212121;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card {
+      border: 2px solid white;
+      width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      background-color: #1c1c1c;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+
+    #btn {
+      padding: 10px 20px;
+      border: none;
+      background-color: #0b38db;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #btn:hover {
+      background-color: #0c34c5;
+    }
+
+    h3 {
+      margin: 10px;
+      text-align: center;
+      /* font-size: 15px; */
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+      <img src="https://images.pexels.com/photos/28319523/pexels-photo-28319523/free-photo-of-autumn-vibe-aesthetic.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt="" srcset="" id="photo">
+      <h3 id="name"></h3>
+      <h3 id="followers"></h3>
+      <button id="btn">Get Info</button>
+  </div>
+
+
+
+
+<!-- 
+  - Some API Online Resources to get API:- 
+    - go to https://api.github.com/users/thefaizaankhan
+    - go to https://randomuser.me/
+    - go to https://jsonformatter.org/ -> to format the api
+    
+  - For years devs used XMLHttpRequest but it is now replaced with fetch() which is new. But XMLHttpRequest is very powerful and is used heavily in AJAX (Asynchronous JavaScript and XML)  (XML stands for Extensible Markup Language). 
+    
+  Value	State	Description
+  0	  UNSENT	  Client has been created. open() not called yet.
+  1	  OPENED	  open() has been called.
+  2	  HEADERS_RECEIVED	  send() has been called, and headers and status are available.
+  3	  LOADING	  Downloading; responseText holds partial data.
+  4	  DONE	  The operation is complete.
+-->
+  
+</body>
+<script>
+
+  const requestUrl = "https://api.github.com/users/thefaizaankhan"
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', requestUrl); // sending the request type,  after sending request state is changed
+  xhr.onreadystatechange = function(){ // tracking the request state
+    console.log(xhr.readyState);
+    if(xhr.readyState === 4) {
+      const data = JSON.parse(this.responseText) // return is response (this -> current context) -> converting data to JSON and parse convert string to json
+      // console.log(typeof data); // typeof data is string not OBJECT -> Response from a URL is most of the times 'String'
+      const myImage = document.querySelector('#photo')
+      myImage.innerHTML = data.avatar_url
+      const myName = document.querySelector('#name')
+      myName.innerHTML = `Name : ${data.name}`
+      const myFollowers = document.querySelector('#followers')
+      myFollowers.innerHTML = `Followers : ${data.followers}`
+      console.log(data.name);  
+      console.log(data.avatar_url);  
+    }  
+  }
+  xhr.send();
+
+</script>
+</html>
