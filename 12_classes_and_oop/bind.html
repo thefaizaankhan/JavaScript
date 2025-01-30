@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bind in JS | React</title>
+</head>
+<body>
+  <button>Button Clicked</button>
+  
+</body>
+<script>
+
+  class React {
+    constructor(){
+      this.library = "React"
+      this.server = "https://localhost:3000"
+
+      // business requirement
+      // By using this.handleClick, you tell JavaScript to look for the handleClick method within the instance of the class React.
+      // bind(this) ensures the this context refers to the class instance.
+      document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+    }
+
+
+    // method
+    handleClick(){
+      console.log("Button Clicked");
+      // console.log(this); // this will hold the button element but why not the library and server properties?
+      console.log(this.server); // undefined -> https://localhost:3000
+      console.log(this.library); // undefined -> React
+    }
+  }
+
+  // create an instance of the class
+  const app = new React()  
+
+  // Two Requirements :-
+  // 1. Get the reference of the button 
+  // 2. Add an event listener to the button which displays some message.
+
+  
+  /*
+  The bind() method in JavaScript is used to explicitly set the value of this for a function, regardless of how or where the function is called.
+
+  Working :-
+
+  - Functions in JavaScript have a this value that depends on how the function is called (its context).
+
+  - The bind() method fixes or "binds" the this value so that it always points to a specific object, even if the function is called in a different context.
+  */
+
+</script>
+</html>

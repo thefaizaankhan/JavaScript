@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closures in JS</title>
+</head>
+<body style="background-color: black; color: white;">
+  <!-- <h1>Hello JS</h1> -->
+   <button id="orange">Orange</button>
+   <button id="green">Green</button>
+  
+</body>
+<script>
+
+  // function init() {
+  // let name = "Mozilla";   
+  //   function displayName() {
+  //     // displayName() is the inner function, that forms a closure
+  //     console.log(name); // use variable declared in the parent function
+  //   }
+  //   displayName();
+  // }
+  // init();
+
+  // Lexical Scoping
+
+  // function outer() {
+  //   let username = "Faizaan";
+    // console.log("OUTER", topSecret);  // ReferenceError: topSecret is not defined
+    
+  //   function inner() {
+  //     let topSecret = "abc222"
+  //     console.log("Inner", username);
+  //   }
+
+  //   function innerTwo() {
+  //     console.log("Inner Two", username);
+  //     console.log(topSecret); // ReferenceError: topSecret is not defined
+  //   }
+  //   inner();
+  //   innerTwo();
+  // }
+
+  // outer();
+
+  // console.log("TOO Outer", username);
+
+  // JS works like a family, where the child can access the properties of the parent but the parent can't access the properties of the child.
+
+</script>
+<script>
+  // Closures
+//   function makeFunc() {
+//     const name = "Mozilla";
+//     function displayName() {
+//       console.log(name);
+//     }
+//     return displayName; 
+//   }
+
+// const myFunc = makeFunc();
+// myFunc();
+
+  // Practical Use case of Closures (Interviews) -> (create two buttons and change the color of the background) 
+
+  // document.getElementById("orange").addEventListener("click", function(){
+  //   document.body.style.backgroundColor = "orange";
+  // })
+
+  // document.getElementById("green").addEventListener("click", function(){
+  //   document.body.style.backgroundColor = "green";
+  // })
+
+  // Now what will happen if there was 500 buttons ?? how will DRY priciple be implemented ? 
+  // Now we will make use of closures to solve this problem
+  // make a clickhandler function and pass the color as an argument and return the function and then use it in the event listener
+
+  function clickHandler(color){
+    // document.body.style.backgroundColor = `${color}`;
+
+    return function () {
+      document.body.style.backgroundColor = `${color}`; 
+    }
+
+    // Due to closures the color variable will be remembered by the clickHandler function and will be used when the function is called. returned function will have access to the color variable. (if ${color} is changed to ${colors} it will not have access and also whatever the argument is passed clickHandler("orange") it doesn't matter)
+
+  }
+
+  document.getElementById("orange").addEventListener("click", () => clickHandler("orange"));
+
+  document.getElementById("green").addEventListener("click", () => clickHandler("green"));
+  
+
+
+// Closures -> when we return the whole function not only function but the scope of the function the lexical scope of the function is returned. (using lexical scope is important)
+
+// Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created. 
+// In this case, myFunc remembers the environment in which it was created, which is makeFunc. 
+// Therefore, when myFunc is invoked, it still has access to the name variable declared in the parent function.
+// This is because the name variable is in the scope of the parent function, which is the environment in which the child function was created.
+// This is the reason why myFunc can still access the name variable, even though the parent function has already finished executing.
+
+// This is the power of closures in JavaScript. Closures are a powerful feature in JavaScript, and they are used in many design patterns, such as the module pattern and the factory pattern. Closures are also used in many libraries and frameworks, such as jQuery and React, to create functions that can be used in different contexts.
+
+
+
+
+
+
+
+
+  
+
+
+
+
+</script>
+</html>
